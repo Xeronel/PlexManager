@@ -1,0 +1,101 @@
+nav.navbar {
+    background-color: #000;
+}
+
+body {
+    background-color: #1F1F1F;
+    color: #FFF;
+}
+
+.data {
+    display: block;
+    width: 75%;
+    margin: 0 auto 0 auto;
+}
+
+.datatable_wrapper {
+    background-color: #1F1F1F;
+    border-color: #E6E6E6;
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+    color: #FFF;
+}
+
+table, td, tr {
+    color: #EEE;
+    background-color: #1F1F1F;
+    border-top-style: none;
+    border-bottom: 1px solid #FF8A01;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    border-top: 1px solid #FF8A01;
+    border-bottom: none;
+}
+
+thead > tr {
+    color: #FFF;
+}
+
+td {
+    border-bottom: solid 1px #E6E6E6;
+}
+
+select {
+    color: #333;
+}
+
+.pagination > li:first-child > .disabled > a,
+.pagination > li:first-child > span {
+    color: #DDD;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+    border-color: #FFF;
+    color: #FFF;
+    background-color: #FF8A01;
+}
+
+.pagination > .disabled > a,
+.pagination > .disabled > a:focus,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > span,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > span:hover {
+    color: #ddd;
+    background-color: #1F1F1F;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+    color: #FF8A01;
+    background-color: #1F1F1F;
+}
+
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+    color: #FF8A01;
+    background-color: #1F1F1F;
+    outline: none;
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover {
+    color: #FFF;
+    background-color: #FF8A01;
+}
