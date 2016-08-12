@@ -9,26 +9,17 @@ $('.nav li').click(function (e) {
 
 var plexdb = {};
 
-plexdb.toggle_tables = function () {
-    var unwatched_table = $('#unwatched_data');
-    var watched_table = $('#watched_data');
-
-    if (unwatched_table.hasClass('hidden')) {
-        unwatched_table.removeClass('hidden');
-    } else {
-        unwatched_table.addClass('hidden');
-    }
-
-    if (watched_table.hasClass('hidden')) {
-        watched_table.removeClass('hidden');
-    } else {
-        watched_table.addClass('hidden');
+plexdb.toggle_tables = function (element) {
+    var e = $(element).parents('.tabledata');
+    $('.tabledata').addClass('hidden');
+    if (e.hasClass('hidden')) {
+        e.removeClass('hidden');
     }
 };
 
 plexdb.loadDataTable = function (element, url) {
     var datatable = $(element).dataTable().api();
-    plexdb.toggle_tables();
+    plexdb.toggle_tables(element);
     datatable.ajax.url(url).load();
 };
 
