@@ -16,10 +16,12 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li id='watched' class="active">
-                    <a onclick="loadWatched()" href="#">Watched</a>
+                    <a onclick="plexdb.loadDataTable('#watched_table', '/api/watched')"
+                       href="#">Watched</a>
                 </li>
                 <li id='unwatched'>
-                    <a onclick="loadUnwatched()" href="#">Unwatched</a>
+                    <a onclick="plexdb.loadDataTable('#unwatched_table', '/api/unwatched')"
+                       href="#">Unwatched</a>
                 </li>
             </ul>
         </div>
@@ -61,73 +63,19 @@
             src="{{ static_url('bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript"
             src="{{ static_url('bower_components/datatables/media/js/dataTables.bootstrap.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ static_url('plexdb.js') }}"></script>
     <script>
-        function toggle_tables() {
-            var unwatched_table = $('#unwatched_data');
-            var watched_table = $('#watched_data');
-
-            if (unwatched_table.hasClass('hidden')) {
-                unwatched_table.removeClass('hidden');
-            } else {
-                unwatched_table.addClass('hidden');
-            }
-
-            if (watched_table.hasClass('hidden')) {
-                watched_table.removeClass('hidden');
-            } else {
-                watched_table.addClass('hidden');
-            }
-        }
-
-        function loadWatched() {
-            var datatable = $('#watched_table').dataTable().api();
-            toggle_tables();
-            datatable.ajax.url('/api/watched').load();
-        }
-
-        function loadUnwatched() {
-            var datatable = $('#unwatched_table').dataTable().api();
-            toggle_tables();
-            datatable.ajax.url('/api/unwatched').load();
-        }
-
-        $('.nav li').click(function (e) {
-            $('.nav li.active').removeClass('active');
-            var me = $(this);
-            if (!me.hasClass('active')) {
-                me.addClass('active');
-            }
-        });
-
-        $('#watched_table').DataTable({
-            ajax: {
-                url: '/api/watched',
-                dataSrc: '',
-                type: 'GET'
-            },
-            autoWidth: false,
-            lengthMenu: [10, 15, 20, 25, 50, 75, 100],
-            columns: [
-                {data: 'name'},
-                {data: 'title'},
-                {data: 'view_count'}
-            ]
-        });
-
-        $('#unwatched_table').DataTable({
-            ajax: {
-                url: '/api/empty',
-                dataSrc: '',
-                type: 'GET'
-            },
-            autoWidth: false,
-            lengthMenu: [10, 15, 20, 25, 50, 75, 100],
-            columns: [
-                {data: 'parent_name'},
-                {data: 'title'},
-                {data: 'show_type'}
-            ]
-        });
+        plexdb.initDataTable(
+                '#watched_table',
+                '/api/watched',
+                [{data: 'name'}, {data: 'title'}, {data: 'view_count'}]
+        );
+        plexdb.initDataTable(
+                '#unwatched_table',
+                '/api/empty',
+                [{data: 'parent_name'}, {data: 'title'}, {data: 'show_type'}]
+        );
     </script>
 </footer>
 </body>

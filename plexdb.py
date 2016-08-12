@@ -22,7 +22,8 @@ if __name__ == '__main__':
     app.listen(9999)
 
     # Connect to database
-    path = '/home/plex/Application Support/Plex Media Server/Plug-in Support/Databases/'
+    # path = '/home/plex/Application Support/Plex Media Server/Plug-in Support/Databases/'
+    path = '/home/ripster/Notebooks/'
     file = 'com.plexapp.plugins.library.db'
     app.db = sqlite3.connect(path + file, isolation_level=None)
 
