@@ -1,3 +1,12 @@
+// Add custom sort for data like "x of y"
+$.fn.dataTable.ext.type.order['xofy-pre'] = function (data) {
+    if (typeof(data) === 'string') {
+        return parseInt(data.split(' of ')[0]);
+    } else {
+        return data;
+    }
+};
+
 // Set nav buttons to active on click
 $('.nav li').click(function (e) {
     $('.nav li.active').removeClass('active');
@@ -7,6 +16,7 @@ $('.nav li').click(function (e) {
     }
 });
 
+// PlexDB API
 var plexdb = {};
 
 plexdb.toggle_tables = function (element) {
@@ -23,7 +33,7 @@ plexdb.loadDataTable = function (element, url) {
     datatable.ajax.url(url).load();
 };
 
-plexdb.initDataTable = function (element, url, columns) {
+plexdb.initDataTable = function (element, url, columns, columnDefs) {
     $(element).DataTable({
         ajax: {
             url: url,
