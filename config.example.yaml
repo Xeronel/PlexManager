@@ -1,0 +1,5 @@
+db:
+    path: "/home/plex/Application Support/Plex Media Server/Plug-in Support/Databases/"
+
+web:
+    compiled_template_cache: False
