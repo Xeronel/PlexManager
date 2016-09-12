@@ -42,6 +42,7 @@ plexdb.initDataTable = function (element, url, columns, columnDefs) {
         },
         autoWidth: false,
         lengthMenu: [10, 15, 20, 25, 50, 75, 100],
-        columns: columns
+        columns: columns,
+        columnDefs: columnDefs
     });
 };
