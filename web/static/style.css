@@ -43,7 +43,12 @@ table, td, tr {
     border-bottom: none;
 }
 
-thead > tr {
+table > tbody > tr > td > a {
+    display: block;
+}
+
+thead > tr,
+table > tbody > tr > td > a {
     color: #FFF;
 }
 
@@ -87,6 +92,9 @@ select {
     background-color: #1F1F1F;
 }
 
+table > tbody > tr > td > a:hover,
+table > tbody > tr > td > a:active,
+table > tbody > tr > td > a:focus,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
     color: #FF8A01;

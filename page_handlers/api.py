@@ -58,6 +58,7 @@ class Unwatched(ApiBase):
             SELECT
                 parent_name,
                 show_type,
+                parent_id,
                 CASE
                     WHEN show_type = 'Movie' THEN 1
                     ELSE COUNT(unwatched.title) || ' of ' || count

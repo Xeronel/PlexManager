@@ -34,7 +34,7 @@
             <thead>
             <tr>
                 <th>Account</th>
-                <th>Title</th>
+                <th class="title">Title</th>
                 <th>Views</th>
             </tr>
             </thead>
@@ -45,9 +45,9 @@
         <table id="unwatched_table" class="table table-condensed">
             <thead>
             <tr>
-                <th>Title</th>
+                <th class="title">Title</th>
                 <th>Type</th>
-                <th>Count</th>
+                <th class="xofy">Count</th>
             </tr>
             </thead>
         </table>
@@ -74,8 +74,7 @@
         plexdb.initDataTable(
                 '#unwatched_table',
                 '/api/empty',
-                [{data: 'parent_name'}, {data: 'show_type'}, {data: 'count'}],
-                [{type: 'xofy', targets: -1}]
+                [{data: 'parent_name'}, {data: 'show_type'}, {data: 'count'}]
         );
     </script>
 </footer>

@@ -16,7 +16,7 @@ $('.nav li').click(function (e) {
     }
 });
 
-// PlexDB API
+// PlexDB Namespace
 var plexdb = {};
 
 plexdb.toggle_tables = function (element) {
@@ -33,7 +33,7 @@ plexdb.loadDataTable = function (element, url) {
     datatable.ajax.url(url).load();
 };
 
-plexdb.initDataTable = function (element, url, columns, columnDefs) {
+plexdb.initDataTable = function (element, url, columns) {
     $(element).DataTable({
         ajax: {
             url: url,
@@ -43,6 +43,15 @@ plexdb.initDataTable = function (element, url, columns, columnDefs) {
         autoWidth: false,
         lengthMenu: [10, 15, 20, 25, 50, 75, 100],
         columns: columns,
-        columnDefs: columnDefs
+        columnDefs: [
+            {type: 'xofy', targets: 'xofy'},
+            {
+                type: 'title',
+                targets: 'title',
+                render: function (data, type, full, meta) {
+                    return '<a href="' + full.parent_id + '">' + data + '</a>';
+                }
+            }
+        ]
     });
 };
