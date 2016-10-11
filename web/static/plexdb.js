@@ -56,7 +56,10 @@ plexdb.initDataTable = function (element, url, columns) {
                 type: 'date',
                 targets: 'date',
                 render: function (data, type, full, meta) {
-                    return data.substr(0, data.indexOf(' '));
+                    if (data)
+                        return data.substr(0, data.indexOf(' '));
+                    else
+                        return data;
                 }
             }
         ]

@@ -33,6 +33,7 @@
         <table id='watched_table' class="table table-condensed">
             <thead>
             <tr>
+                <th class="date">Last Viewed</th>
                 <th>Account</th>
                 <th class="title">Title</th>
                 <th>Views</th>
@@ -70,7 +71,7 @@
         plexdb.initDataTable(
                 '#watched_table',
                 '/api/watched',
-                [{data: 'name'}, {data: 'title'}, {data: 'view_count'}]
+                [{data: 'last_viewed_at'}, {data: 'name'}, {data: 'title'}, {data: 'view_count'}]
         );
         plexdb.initDataTable(
                 '#unwatched_table',
