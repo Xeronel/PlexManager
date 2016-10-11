@@ -51,6 +51,13 @@ plexdb.initDataTable = function (element, url, columns) {
                 render: function (data, type, full, meta) {
                     return '<a href="' + full.parent_id + '">' + data + '</a>';
                 }
+            },
+            {
+                type: 'date',
+                targets: 'date',
+                render: function (data, type, full, meta) {
+                    return data.substr(0, data.indexOf(' '));
+                }
             }
         ]
     });

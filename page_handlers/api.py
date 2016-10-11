@@ -26,17 +26,19 @@ class Unwatched(ApiBase):
             """
             WITH
                 metadata AS (
-                    SELECT M1.id, M1.title, M1.metadata_type, M1.guid, M1.parent_id, M1.title AS parent_name
+                    SELECT M1.id, M1.title, M1.metadata_type, M1.guid,
+                           M1.parent_id, M1.title AS parent_name, M1.added_at
                     FROM metadata_items M1
                     WHERE parent_id IS NULL
                     UNION ALL
-                    SELECT M2.id, M2.title, M2.metadata_type, M2.guid, M2.parent_id, metadata.parent_name AS parent_name
+                    SELECT M2.id, M2.title, M2.metadata_type, M2.guid,
+                           M2.parent_id, metadata.parent_name AS parent_name, M2.added_at
                     FROM metadata_items M2
                     JOIN metadata
                     ON metadata.id = M2.parent_id
                 ),
                 unwatched AS (
-                    SELECT title, parent_name, show_type, parent_id, metadata.id
+                    SELECT title, parent_name, show_type, parent_id, metadata.id, added_at
                     FROM metadata
                     LEFT JOIN pdb_metadata_types
                     ON pdb_metadata_types.id = metadata.metadata_type
@@ -59,6 +61,7 @@ class Unwatched(ApiBase):
                 parent_name,
                 show_type,
                 parent_id,
+                MAX(added_at) as added_at ,
                 CASE
                     WHEN show_type = 'Movie' THEN 1
                     ELSE COUNT(unwatched.title) || ' of ' || count
