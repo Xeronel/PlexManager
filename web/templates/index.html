@@ -36,7 +36,8 @@
                 <th class="date">Last Viewed</th>
                 <th>Account</th>
                 <th class="title">Title</th>
-                <th>Views</th>
+                <th class="views">Views</th>
+                <th class="percent">Percentage</th>
             </tr>
             </thead>
         </table>
@@ -71,7 +72,13 @@
         plexdb.initDataTable(
                 '#watched_table',
                 '/api/watched',
-                [{data: 'last_viewed_at'}, {data: 'name'}, {data: 'title'}, {data: 'view_count'}]
+                [
+                    {data: 'last_viewed_at'},
+                    {data: 'name'},
+                    {data: 'title'},
+                    {data: 'view_count'},
+                    {data: 'view_offset'}
+                ]
         );
         plexdb.initDataTable(
                 '#unwatched_table',

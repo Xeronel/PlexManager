@@ -7,7 +7,9 @@ class Watched(ApiBase):
         cursor = self.db.cursor()
         cursor.execute(
             """
-            SELECT account_id, name, title, view_count, metadata_type, metadata_item_settings.guid, last_viewed_at
+            SELECT account_id, name, title, view_count,
+                   metadata_type, metadata_item_settings.guid,
+                   last_viewed_at, duration, view_offset
             FROM metadata_item_settings
             JOIN accounts, metadata_items
             WHERE account_id = accounts.id

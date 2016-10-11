@@ -6,6 +6,22 @@ $.fn.dataTable.ext.type.order['xofy-pre'] = function (data) {
         return data;
     }
 };
+$.fn.dataTable.ext.type.order['views-pre'] = function (data) {
+    if (typeof(data) === 'string') {
+        return 0;
+    } else {
+        return data;
+    }
+};
+$.fn.dataTable.ext.type.order['percent-pre'] = function (data) {
+    if (typeof(data) === 'string') {
+        var start = data.indexOf('width:') + 6;
+        var stop = data.indexOf('%') - start;
+        return parseInt(data.substr(start, stop));
+    } else {
+        return data;
+    }
+};
 
 // Set nav buttons to active on click
 $('.nav li').click(function (e) {
@@ -60,6 +76,40 @@ plexdb.initDataTable = function (element, url, columns) {
                         return data.substr(0, data.indexOf(' '));
                     else
                         return data;
+                }
+            },
+            {
+                type: 'views',
+                targets: 'views',
+                render: function (data, type, full, meta) {
+                    if (data === 0) {
+                        return 'incomplete';
+                    } else {
+                        return data;
+                    }
+                }
+            },
+            {
+                type: 'percent',
+                targets: 'percent',
+                render: function (data, type, full, meta) {
+                    var percentage = 100;
+                    if (typeof(data) === 'number' && data) {
+                        percentage = (data / full.duration) * 100;
+                    }
+                    percentage = Math.round(percentage);
+                    if (full.view_count > 0) {
+                        percentage = 100;
+                    }
+                    if (full.view_count === 0 && percentage >= 100) {
+                        percentage = 0;
+                    }
+                    return '' +
+                        '<div class="progress">' +
+                        '<div class="progress-bar" aria-valuemin="0" aria-valuemax="100"' +
+                        ' style="width:' + percentage + '%">' +
+                            percentage +
+                        '</div></div>';
                 }
             }
         ]
