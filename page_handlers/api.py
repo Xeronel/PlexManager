@@ -12,6 +12,7 @@ class Watched(ApiBase):
             JOIN accounts, metadata_items
             WHERE account_id = accounts.id
             AND metadata_item_settings.guid = metadata_items.guid
+            AND metadata_item_settings.last_viewed_at NOT NULL
             AND metadata_type IN (1, 2);
             """
         )
@@ -46,6 +47,7 @@ class Unwatched(ApiBase):
                         SELECT metadata.guid
                         FROM metadata_item_settings M1
                         WHERE M1.guid = metadata.guid
+                        AND M1.last_viewed_at NOT NULL
                     )
                     AND metadata_type IN (1, 4)
                 ),
