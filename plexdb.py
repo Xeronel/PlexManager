@@ -10,6 +10,7 @@ def make_app():
     return tornado.web.Application(
         [(r'/api/watched', api.Watched),
          (r'/api/unwatched', api.Unwatched),
+         (r'/api/added_episodes', api.AddedEpisodes),
          (r'/api/empty', api.EmptyObject),
          (r'/', pages.MainHandler)],
         compiled_template_cache=config.web.compiled_template_cache,

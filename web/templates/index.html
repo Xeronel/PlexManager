@@ -23,14 +23,18 @@
                     <a onclick="plexdb.loadDataTable('#unwatched_table', '/api/unwatched')"
                        href="#">Unwatched</a>
                 </li>
+                <li id="added_episodes">
+                    <a onclick="plexdb.loadDataTable('#added_episodes_table', '/api/added_episodes')"
+                       href="#">Recently Added</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
 <div class="data">
-    <div id='watched_data' class="tabledata">
-        <table id='watched_table' class="table table-condensed">
+    <div id="watched_data" class="tabledata">
+        <table id="watched_table" class="table table-condensed">
             <thead>
             <tr>
                 <th class="date">Last Viewed</th>
@@ -43,7 +47,7 @@
         </table>
     </div>
 
-    <div id='unwatched_data' class="tabledata hidden">
+    <div id="unwatched_data" class="tabledata hidden">
         <table id="unwatched_table" class="table table-condensed">
             <thead>
             <tr>
@@ -51,6 +55,18 @@
                 <th class="title">Title</th>
                 <th>Type</th>
                 <th class="xofy">Count</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div id="added_episodes_data" class="tabledata hidden">
+        <table id="added_episodes_table" class="table table-condensed">
+            <thead>
+            <tr>
+                <th class="date">Added</th>
+                <th class="title">TV Show</th>
+                <th>Title</th>
             </tr>
             </thead>
         </table>
@@ -84,6 +100,12 @@
                 '#unwatched_table',
                 '/api/empty',
                 [{data: 'added_at'}, {data: 'parent_name'}, {data: 'show_type'}, {data: 'count'}]
+        );
+
+        plexdb.initDataTable(
+            '#added_episodes_table',
+            '/api/added_episodes',
+            [{data: 'added_at'}, {data: 'parent_name'}, {data: 'title'}]
         );
     </script>
 </footer>

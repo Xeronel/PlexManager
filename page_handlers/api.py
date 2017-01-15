@@ -79,6 +79,38 @@ class Unwatched(ApiBase):
         cursor.close()
 
 
+class AddedEpisodes(ApiBase):
+    def get(self):
+        cursor = self.db.cursor()
+        cursor.execute(
+            """
+            with metadata AS (
+                SELECT M1.id, M1.title, M1.metadata_type, M1.guid,
+                       M1.parent_id, M1.title AS parent_name, M1.added_at
+                FROM metadata_items M1
+                WHERE parent_id IS NULL
+                UNION ALL
+                SELECT M2.id, M2.title, M2.metadata_type, M2.guid,
+                       M2.parent_id, metadata.parent_name AS parent_name, M2.added_at
+                FROM metadata_items M2
+                JOIN metadata
+                ON metadata.id = M2.parent_id
+            )
+
+            SELECT
+                parent_id,
+                parent_name,
+                title,
+                max(added_at) as added_at
+            FROM metadata
+            WHERE metadata_type = 4
+            GROUP BY parent_name
+            ORDER BY added_at DESC
+          """
+        )
+        self.write(json_encode(self.parse_query(cursor.fetchall(), cursor.description)))
+
+
 class EmptyObject(ApiBase):
     def get(self):
         self.write('{}')
