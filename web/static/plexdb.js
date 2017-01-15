@@ -1,3 +1,8 @@
+// Return a default value for optional arguments
+function defaultFor(arg, val) {
+    return typeof arg !== 'undefined' ? arg : val;
+}
+
 // Add custom sort for data like "x of y"
 $.fn.dataTable.ext.type.order['xofy-pre'] = function (data) {
     if (typeof(data) === 'string') {
@@ -49,13 +54,16 @@ plexdb.loadDataTable = function (element, url) {
     datatable.ajax.url(url).load();
 };
 
-plexdb.initDataTable = function (element, url, columns) {
+plexdb.initDataTable = function (element, url, columns, order) {
+    defaultFor(order, [[0, 'asc']]);
+
     $(element).DataTable({
         ajax: {
             url: url,
             dataSrc: '',
             type: 'GET'
         },
+        order: order,
         autoWidth: false,
         lengthMenu: [10, 15, 20, 25, 50, 75, 100],
         columns: columns,
