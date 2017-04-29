@@ -93,3 +93,6 @@ ENV/
 
 # Config file
 config.yaml
+
+# Ignore bower managed components
+/web/static/bower_components
