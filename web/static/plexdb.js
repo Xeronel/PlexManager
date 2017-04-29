@@ -28,17 +28,13 @@ $.fn.dataTable.ext.type.order['percent-pre'] = function (data) {
     }
 };
 
-// Set nav buttons to active on click
-$('.nav li').click(function (e) {
-    $('.nav li.active').removeClass('active');
-    var me = $(this);
-    if (!me.hasClass('active')) {
-        me.addClass('active');
-    }
-});
-
 // PlexDB Namespace
 var plexdb = {};
+
+plexdb.navSelector = function (id) {
+    $('.nav li.active').removeClass("active");
+    $('#' + id).addClass('active');
+}
 
 plexdb.toggle_tables = function (element) {
     var e = $(element).parents('.tabledata');
@@ -123,3 +119,8 @@ plexdb.initDataTable = function (element, url, columns, order) {
         ]
     });
 };
+
+plexdb.nav_click = function (id, table_id, api_path) {
+    plexdb.navSelector(id);
+    plexdb.loadDataTable(table_id, api_path);
+}

@@ -15,24 +15,26 @@
     <div class="container-fluid">
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li id='watched' class="active">
-                    <a onclick="plexdb.loadDataTable('#watched_table', '/api/watched')"
-                       href="#">Watched</a>
+                <li id='watched'>
+                    <a onclick="plexdb.nav_click('watched', '#watched_table', '/api/watched')"
+                       href="/#">Watched</a>
                 </li>
                 <li id='unwatched'>
-                    <a onclick="plexdb.loadDataTable('#unwatched_table', '/api/unwatched')"
-                       href="#">Unwatched</a>
+                    <a onclick="plexdb.nav_click('unwatched', '#unwatched_table', '/api/unwatched')"
+                       href="/#">Unwatched</a>
                 </li>
                 <li id="added_episodes">
-                    <a onclick="plexdb.loadDataTable('#added_episodes_table', '/api/added_episodes')"
-                       href="#">Recently Added</a>
+                    <a onclick="plexdb.nav_click('added_episodes', '#added_episodes_table', '/api/added_episodes')"
+                       href="/#">Recently Added</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
+
 <div class="data">
+    {% block body %}
     <div id="watched_data" class="tabledata">
         <table id="watched_table" class="table table-condensed">
             <thead>
@@ -71,6 +73,7 @@
             </thead>
         </table>
     </div>
+    {% end %}
 </div>
 
 <footer>
@@ -110,7 +113,9 @@
             [{data: 'added_at'}, {data: 'parent_name'}, {data: 'title'}],
             [[0, 'desc']]
         );
+        plexdb.navSelector('{% block active %}watched{% end %}')
     </script>
+    {% block footer %}{% end %}
 </footer>
 </body>
 </html>
