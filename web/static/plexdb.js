@@ -73,7 +73,7 @@ plexdb.initDataTable = function (element, url, columns, order) {
                 type: 'title',
                 targets: 'title',
                 render: function (data, type, full, meta) {
-                    return '<a href="' + full.parent_id + '">' + data + '</a>';
+                    return '<a href="#">' + data + '</a>';
                 }
             },
             {
