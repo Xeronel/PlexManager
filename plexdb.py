@@ -12,7 +12,8 @@ def make_app():
          (r'/api/unwatched', api.Unwatched),
          (r'/api/added_episodes', api.AddedEpisodes),
          (r'/api/empty', api.EmptyObject),
-         (r'/', pages.MainHandler)],
+         (r'/', pages.MainHandler),
+         (r'/requests', pages.Requests)],
         compiled_template_cache=config.web.compiled_template_cache,
         static_path='web/static',
         template_path='web/templates'
