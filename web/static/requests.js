@@ -4,23 +4,21 @@ requests.last_search = '';
 requests.search_func = requests.search_show;
 
 requests.add_show = function(obj) {
-    var output = $('#output');
-    output.append(
+    var search_results = $('#search_results');
+    search_results.append(
         '<div class="row content-data">' +
         '<img src="' + obj.show.image.medium + '" class="poster col-lg-4 col-md-4 col-sm-4 col-xs-4">' +
         '<div class="content-info col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="' + obj.show.url + '">' + obj.show.name + '</a>' +
         '<span class="row description col-lg-12 col-md-12 col-sm-12 col-xs-12">' + obj.show.summary + '</span></div>' +
-        '</div><hr width="95%">'
+        '</div><hr>'
     )
 };
 
 requests.search_show = function (show_name) {
-  // Get showw
+  // Get show
   $.get('http://api.tvmaze.com/search/shows?q=' + show_name, function (data) {
-      var output = $('#output')
-      // Clear output div
-      output.html('');
-
+      // Clear search_results
+      $('#search_results').html('');
       // Add each show to output
       $(data).each(function (idx, obj) {
           if (obj.show.image) {
@@ -31,18 +29,18 @@ requests.search_show = function (show_name) {
 }
 
 requests.add_movie = function(obj) {
-    $('#output').append(
+    $('#search_results').append(
         '<div class="row content-data">' +
         '<img src="https://image.tmdb.org/t/p/w150/' + obj.poster_path + '" class="poster col-lg-4 col-md-4 col-sm-4 col-xs-4">' +
         '<div class="content-info col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="https://www.themoviedb.org/movie/' + obj.id + '">' + obj.title + '</a>' +
         '<span class="row description col-lg-12 col-md-12 col-sm-12 col-xs-12">' + obj.overview + '</span></div>' +
-        '</div><hr width="95%">'
+        '</div><hr>'
     )
 };
 
 requests.search_movie = function(movie_name) {
   $.get('https://api.themoviedb.org/3/search/movie?api_key=146285a857bd0e2e19974450468dd5d7&query=' + movie_name, function (data) {
-      $('#output').html('');
+      $('#search_results').html('');
       $(data.results).each(function (idx, obj) {
           if (obj.poster_path) {
               requests.add_movie(obj);

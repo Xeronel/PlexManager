@@ -135,9 +135,14 @@ table > tbody > tr > td > a:focus,
     color: #FF8A01;
 }
 
-#output {
+#search_results {
     padding-top: 10px;
     padding-left: 15px;
+}
+
+#search_results > hr {
+    border-color: inherit;
+    width: 95%;
 }
 
 .form-control:focus {
@@ -164,6 +169,8 @@ table > tbody > tr > td > a:focus,
 
 .content-data {
     background-color: black;
+    border-style: inset;
+    border-width: 1px;
 }
 
 .content-info {
@@ -172,8 +179,4 @@ table > tbody > tr > td > a:focus,
 
 .description {
     padding-top: 5px;
-}
-
-hr {
-    border-color: inherit;
 }
