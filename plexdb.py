@@ -16,7 +16,8 @@ def make_app():
          (r'/requests', pages.Requests)],
         compiled_template_cache=config.web.compiled_template_cache,
         static_path='web/static',
-        template_path='web/templates'
+        template_path='web/templates',
+        debug=config.web.debug
     )
 
 
