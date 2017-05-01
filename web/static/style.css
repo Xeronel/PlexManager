@@ -155,6 +155,7 @@ table > tbody > tr > td > a:focus,
     width: auto;
     padding-top: 5px;
     padding-bottom: 5px;
+    padding-left: 5px;
 }
 
 .content-info > a {
