@@ -24,7 +24,7 @@ def make_app():
 if __name__ == '__main__':
     # Create a new web application
     app = make_app()
-    app.listen(9999)
+    app.listen(config.web.host_port)
 
     # Connect to database
     file = 'com.plexapp.plugins.library.db'
