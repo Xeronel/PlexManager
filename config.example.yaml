@@ -2,4 +2,6 @@ db:
     path: "/home/plex/Application Support/Plex Media Server/Plug-in Support/Databases/"
 
 web:
+    debug: true
+    host_port: 9999
     compiled_template_cache: False
