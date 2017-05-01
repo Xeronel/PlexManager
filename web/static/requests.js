@@ -7,8 +7,8 @@ requests.add_show = function(obj) {
     var output = $('#output');
     output.append(
         '<div class="row content-data">' +
-        '<img id="poster" src="' + obj.show.image.medium + '" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">' +
-        '<div class="info col-lg-8 col-md-8 col-sm-8 col-xs-8"><a id="name" href="' + obj.show.url + 'class="name">' + obj.show.name + '</a>' +
+        '<img src="' + obj.show.image.medium + '" class="poster col-lg-4 col-md-4 col-sm-4 col-xs-4">' +
+        '<div class="content-info col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="' + obj.show.url + '">' + obj.show.name + '</a>' +
         '<span class="row description col-lg-12 col-md-12 col-sm-12 col-xs-12">' + obj.show.summary + '</span></div>' +
         '</div><hr width="95%">'
     )
@@ -33,8 +33,8 @@ requests.search_show = function (show_name) {
 requests.add_movie = function(obj) {
     $('#output').append(
         '<div class="row content-data">' +
-        '<img id="poster" src="https://image.tmdb.org/t/p/w150/' + obj.poster_path + '" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">' +
-        '<div class="info col-lg-8 col-md-8 col-sm-8 col-xs-8"><a id="name" href="https://www.themoviedb.org/movie/' + obj.id + 'class="name">' + obj.title + '</a>' +
+        '<img src="https://image.tmdb.org/t/p/w150/' + obj.poster_path + '" class="poster col-lg-4 col-md-4 col-sm-4 col-xs-4">' +
+        '<div class="content-info col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="https://www.themoviedb.org/movie/' + obj.id + '">' + obj.title + '</a>' +
         '<span class="row description col-lg-12 col-md-12 col-sm-12 col-xs-12">' + obj.overview + '</span></div>' +
         '</div><hr width="95%">'
     )
