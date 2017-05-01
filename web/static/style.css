@@ -137,7 +137,7 @@ table > tbody > tr > td > a:focus,
 
 #search_results {
     padding-top: 10px;
-    padding-left: 20px;
+    padding-left: 25px;
 }
 
 #search_results > hr {
@@ -169,12 +169,15 @@ table > tbody > tr > td > a:focus,
 }
 
 .content-data {
-    background-color: black;
+    background-color: #0F0F10;
     border-style: inset;
     border-width: 1px;
+    border-radius: 4px;
+    border-color: #EEE;
 }
 
 .content-info {
+    margin: left;
     padding-top: 10px;
 }
 
