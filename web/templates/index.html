@@ -35,9 +35,8 @@
     </div>
 </nav>
 
-
+{% block body %}
 <div class="data">
-    {% block body %}
     <div id="watched_data" class="tabledata">
         <table id="watched_table" class="table table-condensed">
             <thead>
@@ -76,8 +75,8 @@
             </thead>
         </table>
     </div>
-    {% end %}
 </div>
+{% end %}
 
 <footer>
     <script type="text/javascript"

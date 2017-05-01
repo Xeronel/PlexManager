@@ -119,3 +119,57 @@ table > tbody > tr > td > a:focus,
     color: #FF8A01;
     font-weight: bold;
 }
+
+.search-bar {
+    margin: left;
+    padding-top: 12px;
+    color: #FF8A01;
+    font-size: 25px;
+    width: 50%
+}
+
+.row > label {
+    padding-left: 15px;
+    padding-top: 10px;
+    font-size: 15px;
+    color: #FF8A01;
+}
+
+#output {
+    padding-top: 10px;
+    padding-left: 15px;
+}
+
+.form-control:focus {
+    border-color: #FF8A01;
+    box-shadow: 0px 0px 7px 1px #FF8A01;
+}
+
+#poster {
+    height: 190px ;
+    width: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#name {
+    font-size: 18px;
+    text-decoration: underline;
+    color: #FF8A01;
+}
+
+.btn-group {
+    margin: left;
+}
+
+.content-data {
+    background-color: black;
+}
+
+.info {
+    padding-top: 10px;
+}
+
+.description {
+    padding-top: 5px;
+}
