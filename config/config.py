@@ -16,6 +16,7 @@ class WebConfig(BaseConfig):
         defaults = {'debug': False,
                     'autoreload': False,
                     'compiled_template_cache': True,
+                    'host_port': 9999,
                     'static_path': 'web/static',
                     'template_path': 'web/templates',
                     'cookie_secret': {0: '__SECRET__'},
