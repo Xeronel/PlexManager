@@ -41,15 +41,15 @@ class DBConfig(BaseConfig):
 
         
 class LoggingConfig(BaseConfig):
-	def __init__(self, sectino):
-		defaults = {'journald': True,
-					'stdout': False
-					'level': 'INFO'}
-		super(LoggingConfig, self).__init__(defaults, section)
+    def __init__(self, sectino):
+        defaults = {'journald': True,
+                    'stdout': False
+                    'level': 'INFO'}
+        super(LoggingConfig, self).__init__(defaults, section)
 
-		# Convert log level to a value
-		self.level = str(self.level).upper()
-		new_level = logging.getLevelName(self.level)  # Returns int if level not defined
-		if type(new_level) == str:
-			new_level = 'NOTSET'
-		self.level = new_level
+        # Convert log level to a value
+        self.level = str(self.level).upper()
+        new_level = logging.getLevelName(self.level)  # Returns int if level not defined
+        if type(new_level) == str:
+            new_level = 'NOTSET'
+        self.level = new_level
