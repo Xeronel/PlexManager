@@ -1,3 +1,6 @@
+import logging
+
+
 class BaseConfig:
     def __init__(self, defaults, section):
         self._set_attribs(defaults)
@@ -41,9 +44,9 @@ class DBConfig(BaseConfig):
 
         
 class LoggingConfig(BaseConfig):
-    def __init__(self, sectino):
+    def __init__(self, section):
         defaults = {'journald': True,
-                    'stdout': False
+                    'stdout': False,
                     'level': 'INFO'}
         super(LoggingConfig, self).__init__(defaults, section)
 
