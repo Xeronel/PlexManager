@@ -4,6 +4,7 @@ from page_handlers import api, pages
 import sqlite3
 import config
 import os
+import logging
 
 
 def make_app():
@@ -17,7 +18,7 @@ def make_app():
         compiled_template_cache=config.web.compiled_template_cache,
         static_path='web/static',
         template_path='web/templates',
-        debug=config.web.debug
+        debug=True if config.logging.level == logging.getLevelName('DEBUG') else False
     )
 
 
