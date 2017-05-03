@@ -2,17 +2,6 @@ import tornado.web
 from datetime import date
 from dateutil import parser as dateutil
 import logging
-import config
-
-# Setup logging facilities
-logging.basicConfig(format="[%(filename)s:%(lineno)s %(funcName)s()] %(message)s")
-log = logging.getLogger('page_handlers')
-
-log.propagate = True
-if config.web.debug:
-    log.setLevel(logging.DEBUG)
-else:
-    log.setLevel(logging.INFO)
 
 
 class BaseHandler(tornado.web.RequestHandler):

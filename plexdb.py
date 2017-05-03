@@ -5,6 +5,7 @@ import sqlite3
 import config
 import os
 import logging
+from systemd import journal
 
 
 def make_app():
@@ -23,6 +24,20 @@ def make_app():
 
 
 if __name__ == '__main__':
+    # Setup logging facilities
+    if config.logging.stdout:
+        logging.basicConfig(format="[%(filename)s:%(lineno)s %(funcName)s()] %(message)s")
+    else:
+        logging.basicConfig(format="[%(filename)s:%(lineno)s %(funcName)s()] %(message)s",
+                            stream=open(os.devnull, 'w'))
+    root_log = logging.getLogger()
+    root_log.propagate = True
+    root_log.setLevel(config.logging.level)
+    log = logging.getLogger('page_handlers')
+    log.propagate = True
+    if config.logging.journald:
+        log.addHandler(journal.JournalHandler())
+
     # Create a new web application
     app = make_app()
     app.listen(config.web.host_port)
