@@ -8,7 +8,7 @@ requests.add_show = function(obj) {
     search_results.append(
         '<div class="row content-data">' +
         '<img src="' + obj.show.image.medium + '" class="poster col-lg-4 col-md-4 col-sm-4 col-xs-4">' +
-        '<div class="content-info col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="' + obj.show.url + '">' + obj.show.name + '</a>' +
+        '<div class="content-info col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="' + obj.show.url + '">' + obj.show.name + ' (' + obj.show.premiered.split('-')[0] + ')' + '</a>' +
         '<span class="row description col-lg-12 col-md-12 col-sm-12 col-xs-12">' + obj.show.summary + '</span></div>' +
         '</div><hr>'
     )
@@ -32,7 +32,7 @@ requests.add_movie = function(obj) {
     $('#search_results').append(
         '<div class="row content-data">' +
         '<img src="https://image.tmdb.org/t/p/w150/' + obj.poster_path + '" class="poster col-lg-4 col-md-4 col-sm-4 col-xs-4">' +
-        '<div class="content-info col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="https://www.themoviedb.org/movie/' + obj.id + '">' + obj.title + '</a>' +
+        '<div class="content-info col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="https://www.themoviedb.org/movie/' + obj.id + '">' + obj.title + ' (' + obj.release_date.split('-')[0] + ')' + '</a>' +
         '<span class="row description col-lg-12 col-md-12 col-sm-12 col-xs-12">' + obj.overview + '</span></div>' +
         '</div><hr>'
     )
